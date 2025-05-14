@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Brug Spring Boot’s parent for at få dependency-management -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.1.2</version>    <!-- vælg en passende, aktuel version -->
+        <relativePath/>             <!-- undgå konflikter med dit eget root-pom -->
+    </parent>
+
+    <groupId>dk.sdu.mmmi.cbse</groupId>
+    <artifactId>scoringsystem</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>   <!-- et service-modul er typisk en JAR -->
+    <name>ScoringSystem</name>
+
+    <properties>
+        <!-- Sørg for en Java-version der passer til din build -->
+        <java.version>17</java.version>
+    </properties>
+
+    <dependencies>
+        <!-- Web-starter indeholder Spring MVC + embedded Tomcat -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- (evt. flere afhængigheder som testen kræver) -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Gør det muligt at køre mvn spring-boot:run mv. -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
